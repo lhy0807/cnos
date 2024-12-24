@@ -9,8 +9,8 @@ from tqdm import tqdm
 import argparse
 from src.utils.trimesh_utils import as_mesh
 from src.utils.trimesh_utils import get_obj_diameter
-os.environ["DISPLAY"] = ":1"
-os.environ["PYOPENGL_PLATFORM"] = "egl"
+# os.environ["DISPLAY"] = ":1"
+# os.environ["PYOPENGL_PLATFORM"] = "egl"
 
 
 def render(
@@ -95,6 +95,7 @@ if __name__ == "__main__":
 
     # load mesh to meter
     mesh = trimesh.load_mesh(args.cad_path)
+    mesh.apply_scale(0.01)
 
     # re-center objects at the origin
     re_center_transform = np.eye(4)
